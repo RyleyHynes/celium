@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import type { ReactNode } from 'react'
-import RouteMap from '@/components/media/RouteMap'
+import { RouteMap } from '../media'
 
 const fitBounds = vi.fn()
 const flyTo = vi.fn()

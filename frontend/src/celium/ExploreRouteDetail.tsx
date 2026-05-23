@@ -14,10 +14,10 @@ import {
 } from '@/features/api/celiumRoutes'
 import Button from '@/components/buttons/Button'
 import EmptyState from '@/components/data-display/EmptyState'
-import PhotoCarousel from '@/components/media/PhotoCarousel'
 import { useAuth } from '@/celium/auth'
 import useRoutePermissions from '@/celium/hooks/useRoutePermissions'
 import { getRoutePhotos } from '@/utils/routePhotos'
+import { PhotoCarousel } from '@/components'
 
 type RouteFormState = {
   name: string

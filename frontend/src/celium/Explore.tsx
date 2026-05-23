@@ -10,7 +10,6 @@ import DualRangeSlider from '@/components/form/DualRangeSlider'
 import Dropdown from '@/components/form/Dropdown'
 import PageToolbar from '@/components/layout/PageToolbar'
 import RouteCard from '@/components/cards/RouteCard'
-import RouteMap from '@/components/media/RouteMap'
 import SearchBar from '@/components/form/SearchBar'
 import SectionHeader from '@/components/layout/SectionHeader'
 import Tabs from '@/components/data-display/Tabs'
@@ -22,6 +21,7 @@ import useRouteForm from '@/celium/hooks/useRouteForm'
 import useRoutePermissions from '@/celium/hooks/useRoutePermissions'
 import useRoutesData from '@/celium/hooks/useRoutesData'
 import { getRoutePhotos } from '@/utils/routePhotos'
+import { RouteMap } from '@/components'
 
 const LENGTH_CAP_MILES = 50
 const ELEVATION_CAP_FEET = 6000
