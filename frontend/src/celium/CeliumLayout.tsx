@@ -4,11 +4,11 @@ import { LogIn, LogOut, Moon, Sun } from 'lucide-react'
 import Button from '@/components/buttons/Button'
 import IconButton from '@/components/buttons/IconButton'
 import Avatar from '@/components/user/Avatar'
-import { useAuth } from '@/auth'
+import { useAuth } from '@/celium/auth'
 
 const navItems = [
-  { label: 'Explore', to: '/apps/celium/explore' },
-  { label: 'Plan', to: '/apps/celium/plan' },
+  { label: 'Explore', to: '/explore' },
+  { label: 'Plan', to: '/plan' },
 ]
 
 const CeliumLayout = () => {
@@ -48,16 +48,16 @@ const CeliumLayout = () => {
       <header className="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-800 bg-white/85 dark:bg-slate-950/70 backdrop-blur">
         <div className="container-padded h-16 flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link to="/apps/celium/explore" className="flex items-center gap-2">
+            <Link className="flex items-center gap-2" to="/explore">
               <span className="h-9 w-9 rounded-xl bg-emerald-600 text-white grid place-items-center font-semibold">C</span>
               <span className="text-lg font-semibold tracking-tight">Celium</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               {navItems.map(item => (
                 <NavLink
+                  className={({ isActive }) => `navlink ${isActive ? 'text-emerald-600 dark:text-emerald-300' : ''}`}
                   key={item.to}
                   to={item.to}
-                  className={({ isActive }) => `navlink ${isActive ? 'text-emerald-600 dark:text-emerald-300' : ''}`}
                 >
                   {item.label}
                 </NavLink>
@@ -65,9 +65,6 @@ const CeliumLayout = () => {
             </nav>
           </div>
           <div className="flex items-center gap-3">
-            <Link to="/projects/celium" className="text-xs text-slate-500 hover:text-emerald-600 transition-colors">
-              ← Portfolio
-            </Link>
             <IconButton
               ariaLabel="Toggle dark mode"
               icon={enabled ? <Sun size={16} /> : <Moon size={16} />}
@@ -115,7 +112,7 @@ const CeliumLayout = () => {
                 className="inline-flex items-center gap-1 rounded-full border border-slate-300/80 px-3 py-1.5 text-xs font-medium text-slate-700 transition-colors hover:border-emerald-500 hover:text-emerald-600 dark:border-slate-700 dark:text-slate-200"
                 type="button"
                 variant="ghost"
-                onClick={() => void login({ returnTo: '/apps/celium/explore', mode: 'signin' })}
+                onClick={() => void login({ returnTo: '/explore', mode: 'signin' })}
               >
                 <LogIn size={14} />
                 Sign in

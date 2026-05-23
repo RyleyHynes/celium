@@ -139,10 +139,10 @@ describe('Reusable components', () => {
     const onDelete = vi.fn()
 
     const { container } = render(
-      <MemoryRouter initialEntries={['/apps/celium/explore']}>
+      <MemoryRouter initialEntries={['/explore']}>
         <RouteCard
           coverImage="cover.jpg"
-          href="/apps/celium/explore/routes/route-1"
+          href="/explore/routes/route-1"
           onDelete={onDelete}
           route={sampleRoute}
         />
@@ -152,14 +152,14 @@ describe('Reusable components', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Delete' }))
     expect(onDelete).toHaveBeenCalledWith(sampleRoute)
-    expect(screen.getByTestId('location')).toHaveTextContent('/apps/celium/explore')
+    expect(screen.getByTestId('location')).toHaveTextContent('/explore')
 
     const selectable = container.querySelector('[role="link"][tabindex="0"]')
     if (!selectable) {
       throw new Error('Route card select element missing')
     }
     fireEvent.keyDown(selectable, { key: 'Enter' })
-    expect(screen.getByTestId('location')).toHaveTextContent('/apps/celium/explore/routes/route-1')
+    expect(screen.getByTestId('location')).toHaveTextContent('/explore/routes/route-1')
   })
 
   it('renders buttons, stats, and user chips', () => {
@@ -169,7 +169,7 @@ describe('Reusable components', () => {
         <IconButton ariaLabel="Settings" icon={<span>Icon</span>} />
         <IconButton ariaLabel="Docs" icon={<span>Icon</span>} href="https://example.com" />
         <Avatar initials="CU" label="Celium User" />
-        <UserChip name="Ryley" role="Explorer" />
+        <UserChip name="Alex" role="Explorer" />
         <StatGrid
           stats={[
             { label: 'Routes', value: '12' },
@@ -182,7 +182,7 @@ describe('Reusable components', () => {
     expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument()
     expect(screen.getByLabelText('Settings')).toBeInTheDocument()
     expect(screen.getByLabelText('Docs')).toHaveAttribute('href', 'https://example.com')
-    expect(screen.getByText('Ryley')).toBeInTheDocument()
+    expect(screen.getByText('Alex')).toBeInTheDocument()
   })
 
   it('renders tables with columns and rows', () => {

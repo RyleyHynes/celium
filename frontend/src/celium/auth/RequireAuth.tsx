@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useState } from 'react'
+import { type ReactNode, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Button from '@/components/buttons/Button'
 import { authEnabled } from './authConfig'
@@ -11,6 +11,7 @@ type RequireAuthProps = {
 const RequireAuth = ({ children }: RequireAuthProps) => {
   const { getAccessToken, isAuthenticated, isLoading, login, logout } = useAuth()
   const location = useLocation()
+  const loginStartedRef = useRef(false)
   const [tokenError, setTokenError] = useState<string | null>(null)
   const [tokenReady, setTokenReady] = useState(false)
 
@@ -45,6 +46,15 @@ const RequireAuth = ({ children }: RequireAuthProps) => {
     }
   }, [getAccessToken, isAuthenticated])
 
+  useEffect(() => {
+    if (!authEnabled || isAuthenticated || isLoading || loginStartedRef.current) {
+      return
+    }
+
+    loginStartedRef.current = true
+    void login({ returnTo: location.pathname, mode: 'signin' })
+  }, [isAuthenticated, isLoading, location.pathname, login])
+
   if (!authEnabled) {
     return (
       <div className="p-6 text-sm text-rose-600 grid gap-2">
@@ -55,33 +65,7 @@ const RequireAuth = ({ children }: RequireAuthProps) => {
   }
   if (isLoading) return <div className="p-6 text-sm text-slate-500">Checking session...</div>
   if (!isAuthenticated) {
-    return (
-      <section className="min-h-[calc(100vh-8rem)] grid place-items-center px-4 py-10">
-        <div className="w-full max-w-xl rounded-3xl border border-slate-200/70 bg-white/90 dark:bg-slate-950/70 dark:border-slate-800 p-8 shadow-sm">
-          <p className="text-xs uppercase tracking-[0.24em] text-emerald-600">Welcome to Celium</p>
-          <h1 className="mt-3 text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-            Sign in to continue
-          </h1>
-          <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
-            Access route planning, saved progress, and collaborative updates by signing in or creating an account.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button
-              variant="primary"
-              onClick={() => void login({ returnTo: location.pathname, mode: 'signin' })}
-            >
-              Sign in
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => void login({ returnTo: location.pathname, mode: 'signup' })}
-            >
-              Create account
-            </Button>
-          </div>
-        </div>
-      </section>
-    )
+    return <div className="p-6 text-sm text-slate-500">Redirecting to sign in...</div>
   }
   if (!tokenReady && !tokenError) return <div className="p-6 text-sm text-slate-500">Preparing secure session...</div>
   if (tokenError) {

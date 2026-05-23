@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '@/components/buttons/Button'
 import SectionHeader from '@/components/layout/SectionHeader'
-import { AuthContext } from '@/auth/AuthContext'
+import { AuthContext } from '@/celium/auth/AuthContext'
 import {
   PlanListPane,
   PlanStatusBadge,
@@ -129,7 +129,7 @@ const Plan = () => {
                     ))}
                   </div>
                 ) : null}
-                <Link to={`/apps/celium/plan/trips/${selectedPlan.id}`}>
+                <Link to={`/plan/trips/${selectedPlan.id}`}>
                   <Button type="button" variant="primary">Open planning workspace</Button>
                 </Link>
               </>

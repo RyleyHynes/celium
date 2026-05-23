@@ -1,6 +1,6 @@
 # UI Components
 
-This folder contains reusable UI primitives used by both the portfolio views and the Celium app. Components are grouped by intent (buttons, form, layout, data-display, cards, media, user, modal).
+This folder contains reusable UI primitives used by the Celium app. Components are grouped by intent (buttons, form, layout, data-display, cards, media, user, modal).
 
 ## Design goals
 - Opinionated defaults with room to extend via props and className.

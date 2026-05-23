@@ -29,7 +29,7 @@ const RouteInboxPanel = ({
             </div>
             <div className="flex flex-wrap gap-2">
               {planTargets[route.id] ? (
-                <Link to={`/apps/celium/plan/trips/${planTargets[route.id]}`}>
+                <Link to={`/plan/trips/${planTargets[route.id]}`}>
                   <Button type="button" variant="primary">
                     Open planning workspace
                   </Button>

@@ -6,8 +6,8 @@ const authMocks = vi.hoisted(() => ({
   getAccessToken: vi.fn(async () => 'test-token'),
 }))
 
-vi.mock('@/auth', async () => {
-  const actual = await vi.importActual<typeof import('@/auth')>('@/auth')
+vi.mock('@/celium/auth', async () => {
+  const actual = await vi.importActual<typeof import('@/celium/auth')>('@/celium/auth')
   return {
     ...actual,
     useAuth: () => ({
@@ -62,9 +62,9 @@ describe('ExploreRouteDetail', () => {
   it('loads route details and submits updates', async () => {
     const { updateRoute } = await import('@/features/api/celiumRoutes')
     render(
-      <MemoryRouter initialEntries={['/apps/celium/explore/routes/route-1']}>
+      <MemoryRouter initialEntries={['/explore/routes/route-1']}>
         <Routes>
-          <Route path="/apps/celium/explore/routes/:routeId" element={<ExploreRouteDetail />} />
+          <Route path="/explore/routes/:routeId" element={<ExploreRouteDetail />} />
         </Routes>
       </MemoryRouter>
     )

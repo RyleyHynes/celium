@@ -1,8 +1,10 @@
 {
-  "name": "portfolio-root",
+  "name": "celium-root",
   "private": true,
   "scripts": {
-    "dev": "concurrently -k -n BACKEND,FRONTEND \"cd server && . .venv/bin/activate && python manage.py runserver\" \"cd frontend && npm run dev\"",
+    "dev": "concurrently -k -n BACKEND,FRONTEND \"cd backend/Celium.Api && dotnet run\" \"cd frontend && npm run dev\"",
+    "build:backend": "dotnet build backend/Celium.sln",
+    "build:frontend": "cd frontend && npm run build",
     "prepare": "husky install",
     "lint:frontend": "cd frontend && npm run lint",
     "test:frontend": "cd frontend && npm run test"

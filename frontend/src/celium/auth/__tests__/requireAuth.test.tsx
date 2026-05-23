@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import RequireAuth from '@/auth/RequireAuth'
-import RequireRole from '@/auth/RequireRole'
-import { AuthContext, type AuthContextValue } from '@/auth/AuthContext'
+import RequireAuth from '@/celium/auth/RequireAuth'
+import RequireRole from '@/celium/auth/RequireRole'
+import { AuthContext, type AuthContextValue } from '@/celium/auth/AuthContext'
 
 const mockAuth: AuthContextValue = {
   isAuthenticated: true,

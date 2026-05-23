@@ -1,17 +1,8 @@
-/**
- * External Imports
- */
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-/** 
- * Internal Imports
- */
-import App from './app/App'
-import { AuthProvider } from './auth'
-/** 
- * Style Imports
- */
+import App from './App'
+import { AuthProvider } from './celium/auth'
 import 'leaflet/dist/leaflet.css'
 import './index.css'
 import './styles/global.scss'
@@ -22,8 +13,8 @@ import './styles/global.scss'
  * @remarks
  * The BrowserRouter uses the Vite-provided `BASE_URL` so the app can deploy to subpaths.
  */
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <AuthProvider>
       <BrowserRouter
         basename={import.meta.env.BASE_URL}
@@ -35,5 +26,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <App />
       </BrowserRouter>
     </AuthProvider>
-  </React.StrictMode>
+  </StrictMode>
 )

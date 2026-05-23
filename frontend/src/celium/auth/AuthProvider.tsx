@@ -20,8 +20,10 @@ const stripBasePath = (path: string) => {
 }
 
 const normalizeReturnTo = (returnTo?: string) => {
-  const candidate = stripBasePath(returnTo ?? '/apps/celium/explore')
-  return candidate.startsWith('/apps/celium') ? candidate : '/apps/celium/explore'
+  const candidate = stripBasePath(returnTo ?? '/explore')
+  return candidate === '/' || candidate.startsWith('/explore') || candidate.startsWith('/plan')
+    ? candidate
+    : '/explore'
 }
 
 const FallbackProvider = ({ children }: AuthProviderProps) => (
@@ -73,7 +75,7 @@ const AuthBridge = ({ children }: AuthProviderProps) => {
           }
         })
 
-        const logoutReturnTo = `${window.location.origin}${basePath === '/' ? '' : basePath}/apps/celium`
+        const logoutReturnTo = `${window.location.origin}${basePath === '/' ? '' : basePath}`
 
         auth0Logout({
           logoutParams: {

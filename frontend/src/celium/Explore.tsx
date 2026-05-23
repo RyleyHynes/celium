@@ -10,18 +10,18 @@ import DualRangeSlider from '@/components/form/DualRangeSlider'
 import Dropdown from '@/components/form/Dropdown'
 import PageToolbar from '@/components/layout/PageToolbar'
 import RouteCard from '@/components/cards/RouteCard'
-import RouteMap from '@/components/media/RouteMap'
 import SearchBar from '@/components/form/SearchBar'
 import SectionHeader from '@/components/layout/SectionHeader'
 import Tabs from '@/components/data-display/Tabs'
 import { Modal, defaultRouteForm } from '@/components/modal'
-import { useAuth } from '@/auth'
+import { useAuth } from '@/celium/auth'
 import RouteFormModal from '@/celium/RouteFormModal'
 import { parseCreateRoutePayload } from '@/celium/routeFormParser'
 import useRouteForm from '@/celium/hooks/useRouteForm'
 import useRoutePermissions from '@/celium/hooks/useRoutePermissions'
 import useRoutesData from '@/celium/hooks/useRoutesData'
 import { getRoutePhotos } from '@/utils/routePhotos'
+import { RouteMap } from '@/components'
 
 const LENGTH_CAP_MILES = 50
 const ELEVATION_CAP_FEET = 6000
@@ -126,7 +126,7 @@ const Explore = () => {
     setError(null)
     try {
       if (!isAuthenticated) {
-        await login({ returnTo: '/apps/celium/explore' })
+        await login({ returnTo: '/explore' })
         return
       }
 
@@ -146,7 +146,7 @@ const Explore = () => {
     setError(null)
     try {
       if (!isAuthenticated) {
-        await login({ returnTo: '/apps/celium/explore' })
+        await login({ returnTo: '/explore' })
         return
       }
 
@@ -283,7 +283,7 @@ const Explore = () => {
                 routeRefs.current[route.id] = element
               }}
               coverImage={getRoutePhotos(route.name)[0]}
-              href={`/apps/celium/explore/routes/${route.id}`}
+              href={`/explore/routes/${route.id}`}
               onDelete={canManage ? setDeleteTarget : undefined}
               route={route}
             />

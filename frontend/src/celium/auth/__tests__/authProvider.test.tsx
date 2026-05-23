@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { AuthProvider, useAuth } from '@/auth'
+import { AuthProvider, useAuth } from '@/celium/auth'
 
 const AuthConsumer = () => {
   const { isAuthenticated } = useAuth()

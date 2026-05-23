@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import PhotoCarousel from '@/components/media/PhotoCarousel'
+import { PhotoCarousel } from '../media'
+
 
 describe('PhotoCarousel', () => {
   afterEach(() => {

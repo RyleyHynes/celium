@@ -165,9 +165,9 @@ describe('Plan pages', () => {
 
   it('renders plan trip detail', async () => {
     render(
-      <MemoryRouter initialEntries={['/apps/celium/plan/trips/plan-matterhorn-journey']}>
+      <MemoryRouter initialEntries={['/plan/trips/plan-matterhorn-journey']}>
         <Routes>
-          <Route path="/apps/celium/plan/trips/:tripId" element={<PlanTripDetail />} />
+          <Route path="/plan/trips/:tripId" element={<PlanTripDetail />} />
         </Routes>
       </MemoryRouter>
     )

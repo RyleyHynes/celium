@@ -2,7 +2,7 @@ import { useCallback, useContext, useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Button from '@/components/buttons/Button'
 import SectionHeader from '@/components/layout/SectionHeader'
-import { AuthContext } from '@/auth/AuthContext'
+import { AuthContext } from '@/celium/auth/AuthContext'
 import {
   ActivityDetailPanel,
   PlanStatusBadge,
@@ -47,7 +47,7 @@ const PlanTripDetail = () => {
   if (isLoading) {
     return (
       <section className="grid gap-4">
-        <Link to="/apps/celium/plan" className="text-xs text-slate-500 hover:text-emerald-600">
+        <Link to="/plan" className="text-xs text-slate-500 hover:text-emerald-600">
           ← Back to Plan
         </Link>
         <p className="text-sm text-slate-500">Loading planning workspace...</p>
@@ -58,7 +58,7 @@ const PlanTripDetail = () => {
   if (!selectedPlan) {
     return (
       <section className="grid gap-4">
-        <Link to="/apps/celium/plan" className="text-xs text-slate-500 hover:text-emerald-600">
+        <Link to="/plan" className="text-xs text-slate-500 hover:text-emerald-600">
           ← Back to Plan
         </Link>
         <p className="text-sm text-slate-500">Plan not found.</p>
@@ -68,7 +68,7 @@ const PlanTripDetail = () => {
 
   return (
     <section className="grid gap-6">
-      <Link to="/apps/celium/plan" className="text-xs text-slate-500 hover:text-emerald-600">
+      <Link to="/plan" className="text-xs text-slate-500 hover:text-emerald-600">
         ← Back to Plan
       </Link>
 

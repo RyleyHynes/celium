@@ -10,9 +10,9 @@ import type {
 import Button from '@/components/buttons/Button'
 import Input from '@/components/form/Input'
 import { Modal } from '@/components/modal'
-import PhotoCarousel from '@/components/media/PhotoCarousel'
 import Select from '@/components/form/Select'
 import type { RouteFormState } from '@/components/modal/routeForm'
+import { PhotoCarousel } from '@/components'
 
 type RouteFormModalProps = {
   form: RouteFormState

@@ -14,10 +14,10 @@ import {
 } from '@/features/api/celiumRoutes'
 import Button from '@/components/buttons/Button'
 import EmptyState from '@/components/data-display/EmptyState'
-import PhotoCarousel from '@/components/media/PhotoCarousel'
-import { useAuth } from '@/auth'
+import { useAuth } from '@/celium/auth'
 import useRoutePermissions from '@/celium/hooks/useRoutePermissions'
 import { getRoutePhotos } from '@/utils/routePhotos'
+import { PhotoCarousel } from '@/components'
 
 type RouteFormState = {
   name: string
@@ -212,13 +212,13 @@ const ExploreRouteDetail = () => {
 
     try {
       if (!isAuthenticated) {
-        await login({ returnTo: `/apps/celium/explore/routes/${routeId}` })
+        await login({ returnTo: `/explore/routes/${routeId}` })
         return
       }
       const accessToken = await getAccessToken()
       if (!accessToken) {
         setError('Session expired. Please sign in again.')
-        await login({ returnTo: `/apps/celium/explore/routes/${routeId}` })
+        await login({ returnTo: `/explore/routes/${routeId}` })
         return
       }
       const payload = {
@@ -260,7 +260,7 @@ const ExploreRouteDetail = () => {
 
   return (
     <section className="grid gap-6">
-      <Link to="/apps/celium/explore" className="text-xs text-slate-500 hover:text-emerald-600">
+      <Link to="/explore" className="text-xs text-slate-500 hover:text-emerald-600">
         ← Back to Explore
       </Link>
 

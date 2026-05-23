@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import Explore from '@/celium/Explore'
-import { AuthProvider } from '@/auth'
+import { AuthProvider } from '@/celium/auth'
 
 const mockRoutes = [
   {
@@ -47,8 +47,8 @@ vi.mock('@/features/api/celiumRoutes', () => ({
   updateRoute: vi.fn(),
 }))
 
-vi.mock('@/auth', async () => {
-  const actual = await vi.importActual<typeof import('@/auth')>('@/auth')
+vi.mock('@/celium/auth', async () => {
+  const actual = await vi.importActual<typeof import('@/celium/auth')>('@/celium/auth')
   return {
     ...actual,
     useAuth: () => ({
